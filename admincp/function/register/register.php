@@ -13,14 +13,14 @@ mysqli_query($conn, 'SET NAMES UTF8');
 // Xử lý đăng ký
 session_start();
 if (isset($_POST['dangky'])) {
-    $tenkhachhang = $_POST['hovaten'];
+    $tenadmin = $_POST['hovaten'];
     $email = $_POST['email'];
-    $dienthoai = $_POST['dienthoai'];
     $diachi = $_POST['diachi'];
     $matkhau = $_POST['matkhau'];
+    $dienthoai = $_POST['dienthoai'];
 
     // Thực hiện truy vấn với biến kết nối $conn
-    $sql_dangky = mysqli_query($conn, "INSERT INTO register(tenadmin, email, diachi, matkhau, dienthoai) 
+    $sql_dangky = mysqli_query($conn, "INSERT INTO tbl_register(tenadmin, email, diachi, matkhau, dienthoai) 
         VALUES('".$tenadmin."','".$email."','".$diachi."','".$matkhau."','".$dienthoai."')");
 
     if ($sql_dangky) {
@@ -29,6 +29,7 @@ if (isset($_POST['dangky'])) {
     } else {
         echo '<p style="color: red;">Đăng ký thất bại</p>';
     }
+    header("location: ../login/login.php");
 }
 
 // Đóng kết nối
@@ -79,7 +80,7 @@ mysqli_close($conn);
         <td><input type="password" size="50" name="matkhau" placeholder="password..."></td>
     </tr>
     <tr>
-        <td><input type="submit" name="dangky" value="Đăng ký" style="height:35px; background-color: #337ab7; color: #fff; cursor:pointer"></td>
+        <td><input type="submit" name="dangky" value="Đăng ký"  style="height:35px; background-color: #337ab7; color: #fff; cursor:pointer"></td>
     </tr>
 </table>
 </form>

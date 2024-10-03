@@ -16,9 +16,12 @@
 <body>
 
 	<?php
+		// include("configuration/connect.php");
+		// include("pages/menu.php");
+		include("../configuration/connect.php");
 		include("modules/administration.php");
-		// include("modules/main.php");
-		include("modules/introduce.php");
+		include("modules/main.php");
+		// include("modules/introduce.php");
 		include("modules/footer.php");
 		include("modules/wrapper.php");
 	?>

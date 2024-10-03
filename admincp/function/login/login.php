@@ -14,7 +14,7 @@ if (isset($_POST['dangnhap'])) {
     $password = $_POST['password'];
 
     // Sử dụng câu truy vấn chuẩn bị để tránh tấn công SQL injection
-    $sql = $conn->prepare("SELECT * FROM register WHERE email=? AND matkhau=? LIMIT 1");
+    $sql = $conn->prepare("SELECT * FROM tbl_register WHERE email=? AND matkhau=? LIMIT 1");
     $sql->bind_param("ss", $email, $password);
     $sql->execute();
 
@@ -27,7 +27,7 @@ if (isset($_POST['dangnhap'])) {
         
         // Lưu thông tin đăng nhập vào session
         $_SESSION['dangky'] = $row['tenadmin'];
-        header("location: http://localhost:8080/Project_banhang/admincp/");
+        header("location: http://localhost/Project_banhang/admincp/");
 
         exit();
     } else {

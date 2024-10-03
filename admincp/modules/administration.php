@@ -1,10 +1,3 @@
-<?php
-session_start();
-include_once '../configuration/connect.php';
-
-if($_SESSION['email']== "admin123@gmail.com" && $_SESSION['pass'] == "admin123"){
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +5,8 @@ if($_SESSION['email']== "admin123@gmail.com" && $_SESSION['pass'] == "admin123")
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin</title>
-    <link href="css/styles.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> -->
+    <link href="./css/styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -45,50 +39,37 @@ if($_SESSION['email']== "admin123@gmail.com" && $_SESSION['pass'] == "admin123")
                         // Chuyển hướng tới trang đăng nhập
                         header('Location: ./function/login/login.php');
                         exit();
-                        }
+                    }
                 ?>
             </div>
         </div>
     </nav>
+    
+                <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+                    <ul class="menu">
+                        <li class="active"><a href="index.php"><svg class="glyph stroked dashboard-dial">
+                            </svg><i class="fas fa-home"></i> Trang chủ</a>
+                        </li>
+                        <li><a href="index.php?action=quanlydanhmucsanpham&query=them"><svg class="glyph stroked calendar">
+                            </svg><i class="far fa-list-alt"></i> Danh mục sản phẩm</a>
+                        </li>
+                        <li><a href="index.php?action=quanlysanpham&query=them"><svg class="glyph stroked line-graph">
+                            </svg><i class="fas fa-box-open"></i> Sản phẩm</a>
+                        </li>
+                        <li><a href="index.php?action=quanlydanhmucbaiviet&query=them"><svg class="glyph stroked line-graph">
+                            </svg><i class="far fa-list-alt"></i> Danh mục bài viết</a>
+                        </li><li><a href="index.php?action=quanlybaiviet&query=them"><svg class="glyph stroked line-graph">
+                            </svg><i class="far fa-clipboard"></i> Bài viết</a>
+                        </li>
+                        <li><a href="index.php?action=quanlygiohang&query=them"><svg class="glyph stroked line-graph">
+                            </svg><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                        </li>
+                    </ul>
+                </div>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div id="sidebar-collapse" class="col-lg-2 sidebar">
-                <ul class="menu">
-                    <li class="active"><a href="quantri.php"><svg class="glyph stroked dashboard-dial">
-                        </svg><i class="fas fa-home"></i> Trang chủ</a>
-                    </li>
-                    <li><a href="quantri.php?page_layout=danhsachdm"><svg class="glyph stroked calendar">
-                        </svg><i class="fas fa-list-alt"></i> Danh mục</a>
-                    </li>
-                    <li><a href="quantri.php?page_layout=danhsachsp"><svg class="glyph stroked line-graph">
-                        </svg><i class="fas fa-box-open"></i> Sản phẩm</a>
-                    </li>
-                    <li><a href="quantri.php?page_layout=danhsachsp"><svg class="glyph stroked line-graph">
-                        </svg><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    
 
-    <div class="main">
-        <?php
-            if(isset($_GET['action'])){
-                $tam = $_GET['action'];
-            }else{
-                $tam = '';
-            }if($tam=='danhmuc'){
-                include("modules/category_management/more.php");
-            }else{
-                include("modules/dashboard.php");
-            }
-        ?>
-    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"></script> -->
 </body>
 
-</html>
-<?php
-}else
-header('location: index.php');
-?>
