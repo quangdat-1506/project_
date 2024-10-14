@@ -37,7 +37,10 @@
     </div>
     <div id="product-detail">
         <h3>Chi tiết sản phẩm</h3>
-        <pre><?php echo $row['chi_tiet_sp'];?></pre>
+        <div id="cpsContent" class="cps-block-content">
+            <pre id="content"><?php echo $row['chi_tiet_sp'];?></pre>
+        </div>
+        <!-- <pre><?php echo $row['chi_tiet_sp'];?></pre> -->
     </div>
 </div>
 

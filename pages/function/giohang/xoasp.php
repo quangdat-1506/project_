@@ -1,20 +1,22 @@
 <?php
-session_start();
-$conn = new mysqli('localhost', 'root', '', 'web_mysqli') or die('Không kết nối được với cơ sở dữ liệu');
-mysqli_query($conn, 'SET NAMES UTF8');
+    session_start();
+    $conn = new mysqli('localhost', 'root', '', 'web_mysqli') or die('Không kết nối được với cơ sở dữ liệu');
+    mysqli_query($conn, 'SET NAMES UTF8');
+    session_start(); // Initialize the session
 
-if($id=$_GET['ten_sp']){
-    $sql = "SELECT * FROM tbl_product WHERE ten_sp = '$id' LIMIT 1";
-    $query = mysqli_query($conn,$sql);
-    while($row = mysqli_fetch_array($query)){
-        unlink('img/'.$row['anh_sp']);
+    if (isset($_GET['ten_sp'])) {
+        $id = $_GET['ten_sp'];
+
+        // Check if the product is in the cart
+        if (isset($_SESSION['cart'][$id])) {
+            unset($_SESSION['cart'][$id]); // Remove the product from the cart
+        }
+
+        // Redirect to the cart page
+        header('Location: ../../../index.php?action=giohang');
+        exit;
+    } else {
+        header('Location: index.php'); // If no product is specified, redirect to the home page
+        exit;
     }
-    $sql_xoa = "DELETE FROM tbl_product WHERE ten_sp='".$id."'";
-    mysqli_query($conn,$sql_xoa);
-    header('location: ../../../index.php?action=giohang&query=xoa'); 
-} else {
-    header('location: index.php');
-}
 ?>
-
-

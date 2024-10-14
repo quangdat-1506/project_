@@ -39,6 +39,7 @@
         <td><?php echo $thanhtien; ?></td>
         <td>
             <!-- <a onclick="return xoaSanPham();" href="modules/product_management/handle.php?idsanpham=<?php echo $row['product_id']; ?>" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>Xóa</a> -->
+            <!-- <a onclick="return xoaSanPham();" href="pages/function/giohang/xoasp.php?ten_sp=<?php echo $cart_item['ten_sp']; ?>" class="btn btn-danger">Xóa</a> -->
             <a href="pages/function/giohang/xoasp.php?ten_sp=<?php echo $cart_item['ten_sp']; ?>" class="btn btn-danger">Xóa</a>
         </td>
     </tr>
@@ -53,6 +54,10 @@
     }
     ?>
 </table>
+<div class="cart">
+    <!-- <a><button type="submit" name="submit">Thanh toán<button></a> -->
+    <a><input class="themgiohang" type="submit" name="submit" value="Thanh Toán"></input></a>
+</div>
 <script>
     (function () {
         const quantityContainers = document.querySelectorAll(".quantity");

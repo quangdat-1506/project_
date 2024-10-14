@@ -52,6 +52,7 @@
                             <div class="form-group">
                                 <label>Miêu tả</label>
                                 <textarea rows="5" class="form-control" required name="chi_tiet_sp"></textarea>
+                                 
                             </div>
                             <div class="form-group">
                                 <label>Danh mục</label>
